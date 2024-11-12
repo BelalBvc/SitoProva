@@ -12,7 +12,7 @@
         height: 100dvh;
         position: absolute;
     }
-    .contenitoreMess{
+    .contenitoreMess {
         background-color: transparent;
         width: fit-content;
         position: absolute;
@@ -23,19 +23,17 @@
         border-color: black;
         border-radius: 5%;
         font-family: 'Courier New', Courier, monospace;
-       animation: 0.8;
-       overflow: hidden;
-       border-width: 1%;
-       box-shadow: inset 0 0 0 1px cyan;
-       transform-origin: center center;
+        animation: 0.8;
+        overflow: hidden;
+        border-width: 1%;
+        box-shadow: inset 0 0 0 1px cyan;
+        transition: transform 0.2s ease; /* Rimuove la necessità di animare tutta l'area */
     }
-    .contenitoreMess:hover{
+    
+    .contenitoreMess:hover {
         background-color: #FFC8DD;
-        transform: scaleY(1.5) translateX(-50%) translateY(-50%);
-        transition: all .2s linear;
-        margin: 5%;
-
-        
+        transform: translateX(-50%) translateY(-50%) scale(1.2); /* Applica solo lo scaling senza influire sulla posizione */
+        transition: all .2s linear; /* Rende l'animazione fluida */
     }
 
 
