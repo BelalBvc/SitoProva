@@ -1,60 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-<style>
-    body{
-        background-color: #BDE0FE;
-        width: 100%;
-        height: 100dvh;
-        position: absolute;
-    }
-    .contenitoreMess {
-        background-color: transparent;
-        width: fit-content;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        top: 50%;
-        border-style: solid;
-        border-color: black;
-        border-radius: 5%;
-        font-family: 'Courier New', Courier, monospace;
-        animation: 0.8;
-        overflow: hidden;
-        border-width: 1%;
-        box-shadow: inset 0 0 0 1px cyan;
-        transition: transform 0.2s ease; /* Rimuove la necessità di animare tutta l'area */
-    }
+    <style>
+        .bodyciao {
+            background-image: transparent;
+            width: 100%;
+            height: 100vh; /* Usa vh per una visualizzazione reattiva */
+            margin: 0; /* Rimuove margini predefiniti */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-image 4s ease;
+        }
     
-    .contenitoreMess:hover {
-        background-color: #FFC8DD;
-        transform: translateX(-50%) translateY(-50%) scale(1.2); /* Applica solo lo scaling senza influire sulla posizione */
-        transition: all .2s linear; /* Rende l'animazione fluida */
+        /* Animazione per il gradiente di sfondo */
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    
+        .bodyciao.ciao3 {
+            background: linear-gradient(100deg, #ffffff, #f9f8f1, #d07bbc, #6ea1d2);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+            transition: background-image 4s ease;
+        }
+    
+        /* Stile del contenitore del messaggio */
+        .contenitoreMess {
+            background-color: white; /* Assicurati che il contenitore sia trasparente */
+            width: fit-content;
+            position: absolute;
+            border-radius: 8%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Poppins', sans-serif;
+            font-size: 5vw; /* Usa unità relative per la dimensione del font */
+            padding: 10px;
+            
+            color: white; /* Imposta il colore del testo */
+            transition: transform 10s ease, border-width 0.2s ease;
+            font-weight: lighter;
+        }
+    
+        .contenitoreMess.ciao {
+            transition: 3s;
+            
+            
+        }
+    .contenitoreMess.ciaoHover{
+        transition: 3s;
+        background-color: white;
+        transform: translate(-50%,-50%) scale(1.1);
+        letter-spacing: 9px;
+        font-weight: bold;
     }
-
-
-</style>
-
-<h1> questo è un sito di prova</h1>
-<p> questo è un paragrafo di prova</p>
-<p> questo è un secondo paragrafo di prova</p>
-<p> questo è un terzo paragrafo di prova</p>
-
+    .contenitoreMess > h5{
+        position: relative; /* Posizionamento assoluto rispetto al contenitore */
+    left: 50%;
+    top : -20%; /* Posiziona l'elemento al centro orizzontalmente */ /* Posiziona l'elemento al centro verticalmente */
+    transform: translate(-50%, -50%); /* Centra esattamente l'elemento (compensa metà della larghezza e altezza) */
+    text-align: center; /* Centra il testo all'interno dell'elemento */
+    }
+    .contenitoreMess > h4{
+        position: relative; /* Posizionamento assoluto rispetto al contenitore */
+    left: 50%;
+    top : 90%; /* Posiziona l'elemento al centro orizzontalmente */ /* Posiziona l'elemento al centro verticalmente */
+    transform: translate(-50%, -50%); /* Centra esattamente l'elemento (compensa metà della larghezza e altezza) */
+    text-align: center; /* Centra il testo all'interno dell'elemento */
+    }
+        
+        /* Effetto hover per il testo */
+        .contenitoreMess.ciao1 h3 {
+            text-align: center;
+            transition: background-position 2s ease;
+            background-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 200% 200%; /* Maggiore dimensione per il gradiente */
+            background-position: 100% 100%; /* Gradiente inizialmente fuori dall'area del testo */
+            -webkit-background-clip: text; /* Rende il gradiente visibile solo sul testo */
+            background-clip: text;
+            color: transparent; /* Rende il testo trasparente per far vedere il gradiente */
+            animation: animateGradient 5s ease infinite;
+        }
+    
+        /* Animazione per il gradiente del testo */
+        @keyframes animateGradient {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+    
+        .contenitoreMess h3 {
+                 /* Elimina il margine predefinito di <h3> */
+        }
+    
+        /* Rimuovi qualsiasi colore di sfondo per il contenitore durante l'hover */
+        .contenitoreMess.ciao1 {
+            background-color: transparent !important; /* Assicura che il contenitore non abbia sfondo */
+        }
+    </style>
+    
 
 </head>
-<body>
-    <div class="contenitoreMess">
-     <h3>
-        sito in lavorazione
-     </h3>
 
+<body class="bodyciao" onload="ciao()">
 
-
-    </div>
     
+    <div class="contenitoreMess" onmouseover = "cambiaStile()">
+        <h5>Un colore</h5>
+        <script>
+function ciao(){
+    let divDaCambiare = document.querySelector(".contenitoreMess")
+    divDaCambiare.classList.add('ciao')
+            divDaCambiare.classList.add('ciao1')
+}
+         
+         function cambiaStile(){
+            
+            let divDaCambiare = document.querySelector(".contenitoreMess")
+    divDaCambiare.classList.add('ciao')
+            divDaCambiare.classList.add('ciaoHover')
+
+            let BodyCambiaStile = document.querySelector(".bodyciao")
+            BodyCambiaStile.classList.add('ciao3')
+            
+         }
+        </script>
+        <h3>Scopri l'arte</h3>
+        <h4> Alla volta</h4>
+    </div>
+
 </body>
 </html>
